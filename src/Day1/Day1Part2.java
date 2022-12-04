@@ -10,7 +10,6 @@ public class Day1Part2 {
     public static void main(String[] args) throws FileNotFoundException {
         String path = "/home/bill/Documents/Java/Advent-of-Code-2022/src/Day1/input.txt";
         File file = new File(path);
-        String strLine;
         Scanner sc = new Scanner(file);
         int elfCalories = 0;
         ArrayList<Integer> allElves = new ArrayList<Integer>();
