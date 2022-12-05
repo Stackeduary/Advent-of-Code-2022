@@ -16,9 +16,9 @@ public class Day3Part1 {
 
         // create a HashMap with the priority values of each character
         String allChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        HashMap<Character, Integer> mapping = new HashMap<>();
+        HashMap<Character, Integer> charMapping = new HashMap<>();
         for (int i = 0; i < allChars.length(); i++) {
-            mapping.put(allChars.charAt(i), i + 1);
+            charMapping.put(allChars.charAt(i), i + 1);
         }
 
         // calculate the item priority and total priority of each line in the input file
@@ -42,7 +42,7 @@ public class Day3Part1 {
                 // find the intersection of items in both compartments and get its priority value
                 firstCompartment.retainAll(secondCompartment);
                 char charOverlap = (char) firstCompartment.toArray()[0];
-                itemPriority = mapping.get(charOverlap);
+                itemPriority = charMapping.get(charOverlap);
             } catch (Exception e) {
                 itemPriority = 0; // if there is no overlap between the two compartments
             }
