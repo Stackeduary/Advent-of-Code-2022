@@ -27,6 +27,7 @@ public class Day6Part1 {
                 if (characterHashSet.size() == 4) break windowingLoop;
             }
         }
-        System.out.println((startOfPacketMarker + 3) + " characters must be processed until the first start-of-packet marker is found"); // must add three to the startOfPacketMarker variable because a minimum of four characters must be read into the window
+        // must add three to the startOfPacketMarker variable because a minimum of four characters must initially be read into the window
+        System.out.println((startOfPacketMarker + 3) + " characters must be processed until the first start-of-packet marker is found");
     }
 }

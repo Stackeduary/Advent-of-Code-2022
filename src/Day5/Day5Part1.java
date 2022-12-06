@@ -12,6 +12,8 @@ public class Day5Part1 {
         File file = new File(path);
         Scanner sc = new Scanner(file);
         String strLine;
+
+        // nine strings representing the starting arrangement of stacked crates (top of stack corresponds to index 0 of list)
         String stackStr1 = "NHSJFWTD";
         String stackStr2 = "GBNTQPRH";
         String stackStr3 = "VQL";
@@ -21,6 +23,8 @@ public class Day5Part1 {
         String stackStr7 = "JQBD";
         String stackStr8 = "QHZRVJND";
         String stackStr9 = "SMHNB";
+
+        // nine lists representing the stack of crates (characters) at any point in time
         ArrayList<Character> stack1 = new ArrayList<>();
         ArrayList<Character> stack2 = new ArrayList<>();
         ArrayList<Character> stack3 = new ArrayList<>();
@@ -30,6 +34,8 @@ public class Day5Part1 {
         ArrayList<Character> stack7 = new ArrayList<>();
         ArrayList<Character> stack8 = new ArrayList<>();
         ArrayList<Character> stack9 = new ArrayList<>();
+
+        // add each character from the starting stack string to the list of crates
         for (int i = 0; i < stackStr1.length(); i++) {
             stack1.add(stackStr1.charAt(i));
         }
@@ -61,6 +67,7 @@ public class Day5Part1 {
         // skipping the first 10 lines of input.txt
         for (int i = 0; i < 10; i++) sc.nextLine();
 
+        // create a list of crate lists (corresponding to the entire loading dock)
         List<ArrayList<Character>> stackList = new ArrayList<>();
         stackList.add(stack1);
         stackList.add(stack2);
@@ -72,6 +79,7 @@ public class Day5Part1 {
         stackList.add(stack8);
         stackList.add(stack9);
 
+        // parse each line of the input text file starting with the moves on line 10
         while (sc.hasNext()) {
             strLine = sc.nextLine();
             String[] moveArray = strLine.split(" ");
@@ -79,11 +87,14 @@ public class Day5Part1 {
             int startStack = Integer.parseInt(moveArray[3]) - 1;
             int endStack = Integer.parseInt(moveArray[5]) - 1;
 
+            // insert crates at and remove crates from the beginning of the list  individually (corresponding to the top of the stack)
             for (int i = 0; i < numOfCratesMoved; i++) {
                 stackList.get(endStack).add(0, stackList.get(startStack).get(0));
                 stackList.get(startStack).remove(0);
             }
         }
+
+        // construct and print the resulting string representing the top crate on each stack
         String answerString = "";
         for (int i = 0; i < stackList.size(); i++) answerString += stackList.get(i).get(0);
         System.out.println(answerString);
